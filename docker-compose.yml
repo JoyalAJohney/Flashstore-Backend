@@ -1,0 +1,31 @@
+version: '2.1'
+
+services:
+  postgres:
+    container_name: flashstore_postgres
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - flashstore_network
+
+  redis:
+    container_name: flashstore_redis
+    image: redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - flashstore_network
+
+volumes:
+  postgres_data:
+
+networks:
+  flashstore_network:
+    driver: bridge

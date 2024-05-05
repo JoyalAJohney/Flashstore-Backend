@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "tsx src/database/migrate.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.10",
+    "hono": "^4.3.2",
+    "postgres": "^3.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "drizzle-kit": "^0.20.17",
+    "tsx": "^4.7.1"
+  }
+}
