@@ -1,12 +1,15 @@
 import postgres from 'postgres';
+import { config } from '../common/config';
 import { drizzle } from 'drizzle-orm/postgres-js';
 
+const { database } = config;
+
 const postgresClient = postgres({
-    host: process.env.POSTGRES_HOST,
-    port: parseInt(process.env.POSTGRES_PORT!),
-    database: process.env.POSTGRES_DATABASE,
-    username: process.env.POSTGRES_USERNAME,
-    password: process.env.POSTGRES_PASSWORD,
+    host: database.host,
+    port: database.port,
+    username: database.user,
+    password: database.password,
+    database: database.database
 });
 
 export const db = drizzle(postgresClient);

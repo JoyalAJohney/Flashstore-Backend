@@ -1,7 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import postgres from "postgres";
+import { config } from "../common/config";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 
@@ -9,12 +7,14 @@ import { migrate } from "drizzle-orm/postgres-js/migrator";
 async function runMigration() {
     console.log('Running migration...');
 
+    const { database } = config;
+
     const migrationClient = postgres({
-        host: process.env.POSTGRES_HOST,
-        port: parseInt(process.env.POSTGRES_PORT!),
-        database: process.env.POSTGRES_DATABASE,
-        username: process.env.POSTGRES_USER,
-        password: process.env.POSTGRES_PASSWORD,
+        host: database.host,
+        port: database.port,
+        database: database.database,
+        username: database.user,
+        password: database.password,
         max: 1,
     });
   

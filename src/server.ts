@@ -1,17 +1,14 @@
-// all variables in .env file are now available in process.env
-import dotenv from 'dotenv';
-dotenv.config();
-
-
 import app from './app';
+import { config } from './common/config';
 import { serve } from '@hono/node-server';
 
 
-const appPort = parseInt(process.env.APP_PORT!) || 3000;
+const appPort = config.application.port;
 
 serve({
   port: appPort,
   fetch: app.fetch,
 });
+
 
 console.log(`Listening on localhost:${appPort}...`)
