@@ -9,7 +9,8 @@ const postgresClient = postgres({
     port: database.port,
     username: database.user,
     password: database.password,
-    database: database.database
+    database: database.database,
+    max: 20,
 });
 
 export const db = drizzle(postgresClient);

@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { config } from "../../common/config";
 import { db as dbConn } from "../../database/connection";
-import { users as userTable } from "../schema/user.schema";
+import { users as userTable } from "../entities/user.entity";
 import axios from "axios";
 import jwt from 'jsonwebtoken';
 
