@@ -1,9 +1,11 @@
 import { pgTable, timestamp, uniqueIndex, uuid, varchar } from "drizzle-orm/pg-core";
 
 
+export type UserEntity = typeof users.$inferInsert;
+
 export const users = pgTable('users', {
     id: uuid('id').primaryKey(),
-    email: varchar('email', { length: 256 }).unique().notNull(),
+    email: varchar('email', { length: 256 }).notNull(),
     password: varchar('password', { length: 256 }),
     authProvider: varchar('auth_provider', { length: 256 }),
     authProviderId: varchar('auth_provider_id', { length: 256 }),
@@ -12,6 +14,7 @@ export const users = pgTable('users', {
     createdAt: timestamp('created_at').notNull().defaultNow(),
 }, (users) => {
     return {
-        emailUniqueIndex: uniqueIndex('email_unique_idx').on(users.email)
+        emailAuthProviderUniqueIndex: 
+            uniqueIndex('email_auth_provider_unique_idx').on(users.email, users.authProvider)
     }
 })

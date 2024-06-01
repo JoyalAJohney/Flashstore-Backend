@@ -7,6 +7,7 @@ export const config = {
     application: {
         port: parseInt(process.env.APP_PORT!),
         environment: process.env.ENV,
+        jwt_secret: process.env.JWT_SECRET
     },
     database: {
         host: process.env.POSTGRES_HOST,

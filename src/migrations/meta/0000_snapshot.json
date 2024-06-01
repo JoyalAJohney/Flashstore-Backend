@@ -1,5 +1,5 @@
 {
-  "id": "0364307f-0911-4fb5-b519-def484027ac9",
+  "id": "83755d9d-43a0-484f-bb81-8d0238ec1dd7",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -59,25 +59,18 @@
         }
       },
       "indexes": {
-        "email_unique_idx": {
-          "name": "email_unique_idx",
+        "email_auth_provider_unique_idx": {
+          "name": "email_auth_provider_unique_idx",
           "columns": [
-            "email"
+            "email",
+            "auth_provider"
           ],
           "isUnique": true
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "users_email_unique": {
-          "name": "users_email_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
-        }
-      }
+      "uniqueConstraints": {}
     }
   },
   "enums": {},

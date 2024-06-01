@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import { config } from '../common/config';
+import { config } from '../common/config/config';
 import { drizzle } from 'drizzle-orm/postgres-js';
 
 const { database } = config;
