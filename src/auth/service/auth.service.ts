@@ -51,7 +51,6 @@ export class AuthService {
     }
 
 
-
     // __________________Google Login___________________
     getGoogleAuthURL(): string {
         const googleAuthURL = 'https://accounts.google.com/o/oauth2/v2/auth'

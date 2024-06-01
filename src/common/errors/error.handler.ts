@@ -6,9 +6,9 @@ export const errorHandler = (err: Error, c: Context) => {
     console.error('Error:', err);
 
     if (err instanceof AppError) {
-        return c.json({ message: err.message }, err.statusCode);
+        return c.json({ success: false, message: err.message }, err.statusCode);
     }
 
     // Unhandled error - return 500
-    return c.json({ message: 'Something went wrong' }, 500);
+    return c.json({ success: false, message: 'Something went wrong' }, 500);
 }
