@@ -1,6 +1,6 @@
 
 
-export const enum AuthProvider {
+export enum AuthProvider {
     SYSTEM = 'SYSTEM',
     GOOGLE = 'GOOGLE'
 }

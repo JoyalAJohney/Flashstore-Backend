@@ -25,5 +25,12 @@ export const config = {
         clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
         clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
         redirectURL: process.env.GOOGLE_OAUTH_REDIRECT_URL,
+    },
+    razorpay: {
+        keyId: process.env.RAZORPAY_KEY_ID,
+        keySecret: process.env.RAZORPAY_KEY_SECRET,
+    },
+    slack: {
+        bot_token: process.env.SLACK_BOT_TOKEN,
     }
 }

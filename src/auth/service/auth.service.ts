@@ -12,7 +12,6 @@ import { UtilService } from "../../common/utils/util";
 import { AppError } from "../../common/errors/app.error";
 
 
-
 export class AuthService {
 
     async signUp(email: string, password: string): Promise<UserEntity> {      
@@ -82,16 +81,16 @@ export class AuthService {
                 throw new Error('Failed to decode token');
             }
 
-            const result = await db.select().from(users).where(eq(users.email, payload.email));
+            const result = await db.select().from(users).where(eq(users.email, payload.email as string));
             let dbUser: UserEntity = result[0]
 
             if (!dbUser) {
                 dbUser = {
                     id: uuidv4(),
-                    email: payload.email,
-                    name: payload.name,
-                    authProviderId: payload.sub,
-                    profilePicUrl: payload.picture,
+                    email: payload.email as string,
+                    name: payload.name as string,
+                    authProviderId: payload.sub as string,
+                    profilePicUrl: payload.picture as string,
                     authProvider: AuthProvider.GOOGLE,
                     createdAt: new Date(),
                 }
